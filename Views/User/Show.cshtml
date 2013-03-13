@@ -5,6 +5,11 @@
     Layout = "~/Views/Shared/_Foundation.cshtml";
 }
 
+@helper SongLink(string title, int id)
+{
+    @Html.RouteLink(title, new { controller = "Song", action = "Show", id = id });
+}
+
 <div class="row">
 	<div class="large-12 columns">
 		<h2>Hello, @Model.User.Name</h2>
@@ -12,38 +17,59 @@
 	</div>
 </div>
 <div class="row">
-    <div class="large-5 columns">
-        <h4>Uploaded songs</h4>
-        <table>
+    <div class="large-6 columns">
+        <h4>Recently uploaded songs</h4>
+        @if (Model.UploadedSongs.Any())
+        {
+            <table class="stats">
+                <tbody>
+                    @foreach (var song in Model.UploadedSongs.Take(10))
+                    {
+                        <tr>
+                            <td width="30">@(Model.UploadedSongs.IndexOf(song) + 1)</td>
+                            <td width="300">@song.Artist – @SongLink(song.Title, song.SongId)</td>
+                            <td>@Html.RouteLink("Download", new { controller = "Song", action = "Download", id = song.SongId })</td>
+                            <td>@Html.RouteLink("Edit", new { controller = "Song", action = "Edit", id = song.SongId })
+                        </tr>
+                    }
+                </tbody>
+            </table>
+            @Html.ActionLink("See all", "UploadedSongs", new { controller = "User" })
+        }
+        else
+        {
+            <div class="panel">None</div> 
+        }
+        <h4>Recent activities</h4>
+        @if (Model.Activities.Any())
+        {
+        <table class="stats">
+            <thead>
+                <tr>
+                    <th width="50">Event</th>
+                    <th width="350">Song</th>
+                    <th width="30">Date</th>
+                </tr>
+            </thead>
             <tbody>
-                @foreach (var song in Model.UploadedSongs.Take(10))
+                @foreach (var activity in Model.Activities.Take(10))
                 {
                     <tr>
-                        <td width="30">@(Model.UploadedSongs.IndexOf(song) + 1)</td>
-                        <td width="300">@song.Artist — @Html.RouteLink(song.Title, new { controller = "Song", action = "Show", id = song.SongId })</td>
-                        <td>@Html.RouteLink("Download", new { controller = "Song", action = "Download", id = song.SongId })</td>
-                        <td>@Html.RouteLink("Edit", new { controller = "Song", action = "Edit", id = song.SongId })
-                    </tr>
-                }
-                @if (Model.UploadedSongs.Count == 0)
-                {
-                    <tr>
-                        <td width="290">None</td>
+                        <td>@activity.Event</td>
+                        <td>@activity.Song.Artist – @SongLink(activity.Song.Title, activity.Song.SongId)</td>
+                        <td>@activity.Date.ToString("MM/dd/yyyy", System.Globalization.CultureInfo.InvariantCulture)</td>
                     </tr>
                 }
             </tbody>
         </table>
-        <h4>Recent tracks</h4>
-        @foreach (var song in Model.RecentSongs)
-        {
-            @Html.Partial("Song", song)
+        @Html.ActionLink("See all", "Activities", new { controller = "User" })
         }
-        @if (Model.RecentSongs.Count == 0)
+        else
         {
             <div class="panel">None</div>
         }
     </div>
-    <div class="large-6 large-offset-1 columns">
+    <div class="large-6 columns">
         <div id="chart-overall">
         </div>
     </div>
@@ -107,48 +133,5 @@ else
 
 @if (User.Identity.IsAuthenticated)
 {
-    <script>
-        $(function () {
-            var baseUrl = "@Url.RouteUrl(new { controller = "Song", action = "Like" })";
-
-            $('.btn-like').one('click', function () {
-                like(this);
-            });
-
-            function like(likeButton) {
-                console.log('LIKE()');
-                var song = $(likeButton).closest('.song');
-                var songId = song.find('#SongId').val();
-                console.log('clicked like for ' + songId);
-                var songUrl = baseUrl + "/" + songId;
-                console.log('song url: ' + songUrl);
-                var loadingImage = $('<img />')
-                    .attr({ width: 24, src: "@Url.Content("~/Content/Images/loading.gif")" })
-                    .addClass('img-loading');
-                song.find('.likes-number').after(loadingImage);
-                $.ajax({
-                    type: 'POST',
-                    url: songUrl,
-                    data: { songId: songId },
-                    success: function (data, status) {
-                        if (!data.error) {
-                            var likes = data.likes;
-                            console.log('returned likes: ' + likes);
-                            song.find('.img-loading').remove();
-                            song.find('.likes-number').text(likes).addClass('panel');
-                            $(likeButton).one('click', function () {
-                                like(likeButton);
-                            });
-                        }
-                    },
-                    error: function (data, status) {
-                        console.log('error');
-                        console.log('data:');
-                        console.log(data);
-                        console.log('status: ' + status);
-                    }
-                });
-            }
-        });
-    </script>
+    <script src="/Scripts/User/likes.js"></script>
 }

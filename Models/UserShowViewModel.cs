@@ -10,7 +10,7 @@ namespace MusicSite.Models
     {
         public User User{ get; set; }
         public ActivityShare ActivityShare { get; set; }
-        public List<Song> RecentSongs { get; set; }
+        public List<ActivityInfo> Activities { get; set; }
         public List<Song> UploadedSongs { get; set; }
     }
 }

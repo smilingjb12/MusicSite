@@ -109,6 +109,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\ActivityInfo.cs" />
     <Compile Include="Models\ActivityShare.cs" />
     <Compile Include="Models\CustomMembershipProvider.cs" />
     <Compile Include="Models\CustomRoleProvider.cs" />
@@ -229,6 +230,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Home\Search.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\User\UploadedSongs.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\User\Activities.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

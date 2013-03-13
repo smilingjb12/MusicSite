@@ -1,0 +1,39 @@
+﻿@model List<MusicSite.Models.ActivityInfo>
+
+@{
+    ViewBag.Title = "Activities";
+    Layout = "~/Views/Shared/_Foundation.cshtml";
+}
+
+<div class="row">
+	<div class="large-8 large-centered columns">
+		<h2>Activities</h2>
+		<hr />
+        @if (Model.Any())
+        {
+            <table class="stats">
+                <thead>
+                    <tr>
+                        <th width="70">Event</th>
+                        <th width="400">Song</th>
+                        <th width="30">Date</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var activity in Model)
+                    {
+                        <tr>
+                            <td>@activity.Event</td>
+                            <td>@activity.Song.Artist – @Html.ActionLink(activity.Song.Title, "Show", new { controller = "Song", id = activity.Song.SongId })</td>
+                            <td>@activity.Date.ToString("MM/dd/yyyy", System.Globalization.CultureInfo.InvariantCulture)</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        }
+        else
+        {
+            <div class="panel">None</div> 
+        }
+	</div>
+</div>

@@ -77,5 +77,14 @@ namespace MusicSite.Models.Domain
             };
             return activityShare;
         }
+
+        public List<ActivityInfo> GetActivities()
+        {
+            var activities = new List<ActivityInfo>();
+            var listenActivities = ListenInfos.Select(info => new ActivityInfo { Event = "Listened to", Date = info.Date, Song = info.Song });
+            var uploadActivities = UploadInfos.Select(info => new ActivityInfo { Event = "Uploaded", Date = info.Date, Song = info.Song });
+            var downloadActivities = DownloadInfos.Select(info => new ActivityInfo { Event = "Downloaded", Date = info.Date, Song = info.Song });
+            return listenActivities.Concat(uploadActivities).Concat(downloadActivities).OrderByDescending(activity => activity.Date).ToList();
+        }
     }
 }

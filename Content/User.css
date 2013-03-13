@@ -105,3 +105,7 @@ textarea {
 #id-container {
     display: none;
 }
+
+table.stats {
+    margin-bottom: 7px;
+}

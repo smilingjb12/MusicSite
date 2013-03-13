@@ -18,8 +18,7 @@ namespace MusicSite.Controllers
 
         public ViewResult Show()
         {
-            string name = HttpContext.User.Identity.Name;
-            User user = repository.AllUsers.FirstOrDefault(u => u.Name == name);
+            User user = repository.FindUserByName(User.Identity.Name);
 
             var model = new UserShowViewModel();
             model.User = user;
@@ -31,15 +30,27 @@ namespace MusicSite.Controllers
                 .Take(5)
                 .ToList();
 
-            model.RecentSongs = recentSongs;
+            model.Activities = user.GetActivities();
             model.UploadedSongs = user.GetUploadedSongs();
 
             return View(model);
         }
 
         public ViewResult Upload()
-        {
+        { 
             return View();
+        }
+
+        public ViewResult UploadedSongs()
+        {
+            User user = repository.FindUserByName(User.Identity.Name);
+            return View(user.GetUploadedSongs());
+        }
+
+        public ViewResult Activities()
+        {
+            User user = repository.FindUserByName(User.Identity.Name);
+            return View(user.GetActivities());
         }
 
         [HttpPost]

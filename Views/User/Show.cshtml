@@ -27,7 +27,7 @@
                     {
                         <tr>
                             <td width="30">@(Model.UploadedSongs.IndexOf(song) + 1)</td>
-                            <td width="300">@song.Artist – @SongLink(song.Title, song.SongId)</td>
+                            <td width="350">@song.Artist – @SongLink(song.Title, song.SongId)</td>
                             <td>@Html.RouteLink("Download", new { controller = "Song", action = "Download", id = song.SongId })</td>
                             <td>@Html.RouteLink("Edit", new { controller = "Song", action = "Edit", id = song.SongId })
                         </tr>

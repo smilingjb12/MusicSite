@@ -18,7 +18,7 @@
 <div class="row">
 	<div id="content-column" class="large-8 large-centered columns" style="display:none">
 		 @using (Html.BeginForm())
-        {
+         {
             <fieldset>
                 <legend>Song info</legend>
                     @Html.HiddenFor(m => m.SongId)
@@ -81,6 +81,11 @@
         $('.wmd-code-button, .wmd-help-button, #description-button-bar').hide();
         $('input').first().focus();
         $('#content-column').fadeIn();
+
+        $('form').submit(function() {
+            $('#Artist').val($('#Artist').val().replace(/\s+/g, ' ').trim());
+            $('#Title').val($('#Title').val().replace(/\s+/g, ' ').trim());
+        });
     });
 </script>
        

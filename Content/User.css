@@ -1,0 +1,107 @@
+﻿.input-validation-error
+{
+    border: 1px solid #ff0000 !important;
+    background-color: #ffeeee !important;
+}
+
+.tag-cloud {
+    width: 200px;
+}
+
+.tag-cloud a {
+    display: inline-block;
+    padding: 3px;
+}
+
+.tag1 { font-size: 0.8em }
+.tag2 { font-size: 0.9em }
+.tag3 { font-size: 1em }
+.tag4 { font-size: 1.2em }
+.tag5 { font-size: 1.5em }
+.tag6 { font-size: 1.8em }
+.tag7 { font-size: 2.5em }
+.tag8 { font-size: 3.0em }
+
+.song .artist a {
+    font-weight: bold;
+}
+
+.song div {
+    padding: 3px;
+}
+
+.likes > img {
+    padding-right: 3px;
+    vertical-align: middle;
+    display: inline;
+    cursor: pointer;
+}
+
+.likes > .likes-number {
+    display: inline;
+}
+
+.likes > img:hover {
+    opacity: 0.7;
+}
+
+.song ul + hr {
+    opacity: 0.5;
+}
+
+.song ul.inline-list {
+    margin-bottom: 0 !important;
+}
+
+.center-text {
+    text-align: center;
+}
+
+fieldset .button {
+    margin: 0 !important;
+}
+
+.alert-box {
+    cursor: pointer;
+}
+
+.alert-box.alert {
+    margin-top: 20px;
+}
+
+.center-outer {
+    display: table;
+}
+
+.center-inner {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+#drop-area {
+    width: 232px;
+    height: 230px;
+    margin: 0 auto;
+}
+
+.row #drop-area {
+    margin-top: 50px;
+}
+
+textarea {
+    min-height: 150px !important;
+}
+
+#description-button-bar {
+    padding-bottom: 10px;
+}
+
+#description-preview {
+    border: dashed 1px #ccc;
+    padding: 3px;
+    margin-bottom: 20px;
+}
+
+#id-container {
+    display: none;
+}

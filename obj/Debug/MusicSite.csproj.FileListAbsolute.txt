@@ -1,0 +1,81 @@
+C:\Users\Fluttershy\documents\visual studio 2012\Projects\ConsoleApplication6\MusicSite\bin\MusicSite.dll
+C:\Users\Fluttershy\documents\visual studio 2012\Projects\ConsoleApplication6\MusicSite\bin\MusicSite.pdb
+C:\Users\Fluttershy\documents\visual studio 2012\Projects\ConsoleApplication6\MusicSite\bin\EntityFramework.dll
+C:\Users\Fluttershy\documents\visual studio 2012\Projects\ConsoleApplication6\MusicSite\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\Fluttershy\documents\visual studio 2012\Projects\ConsoleApplication6\MusicSite\bin\System.Web.Helpers.dll
+C:\Users\Fluttershy\documents\visual studio 2012\Projects\ConsoleApplication6\MusicSite\bin\System.Web.Mvc.dll
+C:\Users\Fluttershy\documents\visual studio 2012\Projects\ConsoleApplication6\MusicSite\bin\System.Web.Providers.dll
+C:\Users\Fluttershy\documents\visual studio 2012\Projects\ConsoleApplication6\MusicSite\bin\System.Web.Razor.dll
+C:\Users\Fluttershy\documents\visual studio 2012\Projects\ConsoleApplication6\MusicSite\bin\System.Web.WebPages.Deployment.dll
+C:\Users\Fluttershy\documents\visual studio 2012\Projects\ConsoleApplication6\MusicSite\bin\System.Web.WebPages.dll
+C:\Users\Fluttershy\documents\visual studio 2012\Projects\ConsoleApplication6\MusicSite\bin\System.Web.WebPages.Razor.dll
+C:\Users\Fluttershy\documents\visual studio 2012\Projects\ConsoleApplication6\MusicSite\bin\EntityFramework.xml
+C:\Users\Fluttershy\documents\visual studio 2012\Projects\ConsoleApplication6\MusicSite\bin\System.Web.Helpers.xml
+C:\Users\Fluttershy\documents\visual studio 2012\Projects\ConsoleApplication6\MusicSite\bin\System.Web.Mvc.xml
+C:\Users\Fluttershy\documents\visual studio 2012\Projects\ConsoleApplication6\MusicSite\bin\System.Web.Razor.xml
+C:\Users\Fluttershy\documents\visual studio 2012\Projects\ConsoleApplication6\MusicSite\bin\System.Web.WebPages.xml
+C:\Users\Fluttershy\documents\visual studio 2012\Projects\ConsoleApplication6\MusicSite\bin\System.Web.WebPages.Deployment.xml
+C:\Users\Fluttershy\documents\visual studio 2012\Projects\ConsoleApplication6\MusicSite\bin\System.Web.WebPages.Razor.xml
+C:\Users\Fluttershy\documents\visual studio 2012\Projects\ConsoleApplication6\MusicSite\bin\ru\EntityFramework.resources.dll
+C:\Users\Fluttershy\documents\visual studio 2012\Projects\ConsoleApplication6\MusicSite\bin\ru\System.Web.Providers.resources.dll
+C:\Users\Fluttershy\documents\visual studio 2012\Projects\ConsoleApplication6\MusicSite\obj\Debug\MusicSite.csprojResolveAssemblyReference.cache
+C:\Users\Fluttershy\documents\visual studio 2012\Projects\ConsoleApplication6\MusicSite\obj\Debug\MusicSite.dll
+C:\Users\Fluttershy\documents\visual studio 2012\Projects\ConsoleApplication6\MusicSite\obj\Debug\MusicSite.pdb
+C:\Users\Fluttershy\documents\visual studio 2012\Projects\ConsoleApplication6\MusicSite\bin\Microsoft.Web.Optimization.dll
+C:\Users\Fluttershy\documents\visual studio 2012\Projects\ConsoleApplication6\MusicSite\bin\taglib-sharp.dll
+C:\Users\Rarity\Desktop\MusicSite-master\MusicSite-master\bin\MusicSite.dll
+C:\Users\Rarity\Desktop\MusicSite-master\MusicSite-master\bin\MusicSite.pdb
+C:\Users\Rarity\Desktop\MusicSite-master\MusicSite-master\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\Rarity\Desktop\MusicSite-master\MusicSite-master\bin\System.Web.Helpers.dll
+C:\Users\Rarity\Desktop\MusicSite-master\MusicSite-master\bin\System.Web.Mvc.dll
+C:\Users\Rarity\Desktop\MusicSite-master\MusicSite-master\bin\System.Web.Razor.dll
+C:\Users\Rarity\Desktop\MusicSite-master\MusicSite-master\bin\System.Web.WebPages.Deployment.dll
+C:\Users\Rarity\Desktop\MusicSite-master\MusicSite-master\bin\System.Web.WebPages.dll
+C:\Users\Rarity\Desktop\MusicSite-master\MusicSite-master\bin\System.Web.WebPages.Razor.dll
+C:\Users\Rarity\Desktop\MusicSite-master\MusicSite-master\bin\EntityFramework.xml
+C:\Users\Rarity\Desktop\MusicSite-master\MusicSite-master\bin\Microsoft.Web.Infrastructure.xml
+C:\Users\Rarity\Desktop\MusicSite-master\MusicSite-master\bin\System.Web.Helpers.xml
+C:\Users\Rarity\Desktop\MusicSite-master\MusicSite-master\bin\System.Web.Mvc.xml
+C:\Users\Rarity\Desktop\MusicSite-master\MusicSite-master\bin\System.Web.Razor.xml
+C:\Users\Rarity\Desktop\MusicSite-master\MusicSite-master\bin\System.Web.WebPages.xml
+C:\Users\Rarity\Desktop\MusicSite-master\MusicSite-master\bin\System.Web.WebPages.Deployment.xml
+C:\Users\Rarity\Desktop\MusicSite-master\MusicSite-master\bin\System.Web.WebPages.Razor.xml
+C:\Users\Rarity\Desktop\MusicSite-master\MusicSite-master\bin\ru\EntityFramework.resources.dll
+C:\Users\Rarity\Desktop\MusicSite-master\MusicSite-master\bin\ru\System.Web.Helpers.resources.dll
+C:\Users\Rarity\Desktop\MusicSite-master\MusicSite-master\bin\ru\System.Web.Mvc.resources.dll
+C:\Users\Rarity\Desktop\MusicSite-master\MusicSite-master\bin\ru\System.Web.Providers.resources.dll
+C:\Users\Rarity\Desktop\MusicSite-master\MusicSite-master\bin\ru\System.Web.Razor.resources.dll
+C:\Users\Rarity\Desktop\MusicSite-master\MusicSite-master\bin\ru\System.Web.WebPages.resources.dll
+C:\Users\Rarity\Desktop\MusicSite-master\MusicSite-master\bin\ru\System.Web.WebPages.Deployment.resources.dll
+C:\Users\Rarity\Desktop\MusicSite-master\MusicSite-master\bin\ru\System.Web.WebPages.Razor.resources.dll
+C:\Users\Rarity\Desktop\MusicSite-master\MusicSite-master\obj\Debug\MusicSite.csprojResolveAssemblyReference.cache
+C:\Users\Rarity\Desktop\MusicSite-master\MusicSite-master\obj\Debug\MusicSite.dll
+C:\Users\Rarity\Desktop\MusicSite-master\MusicSite-master\obj\Debug\MusicSite.pdb
+C:\Users\Fluttershy\Documents\Visual Studio 2012\Projects\ConsoleApplication6\test\MusicSite\bin\MusicSite.dll
+C:\Users\Fluttershy\Documents\Visual Studio 2012\Projects\ConsoleApplication6\test\MusicSite\bin\MusicSite.pdb
+C:\Users\Fluttershy\Documents\Visual Studio 2012\Projects\ConsoleApplication6\test\MusicSite\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\Fluttershy\Documents\Visual Studio 2012\Projects\ConsoleApplication6\test\MusicSite\bin\System.Web.Helpers.dll
+C:\Users\Fluttershy\Documents\Visual Studio 2012\Projects\ConsoleApplication6\test\MusicSite\bin\System.Web.Mvc.dll
+C:\Users\Fluttershy\Documents\Visual Studio 2012\Projects\ConsoleApplication6\test\MusicSite\bin\System.Web.Razor.dll
+C:\Users\Fluttershy\Documents\Visual Studio 2012\Projects\ConsoleApplication6\test\MusicSite\bin\System.Web.WebPages.Deployment.dll
+C:\Users\Fluttershy\Documents\Visual Studio 2012\Projects\ConsoleApplication6\test\MusicSite\bin\System.Web.WebPages.dll
+C:\Users\Fluttershy\Documents\Visual Studio 2012\Projects\ConsoleApplication6\test\MusicSite\bin\System.Web.WebPages.Razor.dll
+C:\Users\Fluttershy\Documents\Visual Studio 2012\Projects\ConsoleApplication6\test\MusicSite\bin\EntityFramework.xml
+C:\Users\Fluttershy\Documents\Visual Studio 2012\Projects\ConsoleApplication6\test\MusicSite\bin\Microsoft.Web.Infrastructure.xml
+C:\Users\Fluttershy\Documents\Visual Studio 2012\Projects\ConsoleApplication6\test\MusicSite\bin\System.Web.Helpers.xml
+C:\Users\Fluttershy\Documents\Visual Studio 2012\Projects\ConsoleApplication6\test\MusicSite\bin\System.Web.Mvc.xml
+C:\Users\Fluttershy\Documents\Visual Studio 2012\Projects\ConsoleApplication6\test\MusicSite\bin\System.Web.Razor.xml
+C:\Users\Fluttershy\Documents\Visual Studio 2012\Projects\ConsoleApplication6\test\MusicSite\bin\System.Web.WebPages.xml
+C:\Users\Fluttershy\Documents\Visual Studio 2012\Projects\ConsoleApplication6\test\MusicSite\bin\System.Web.WebPages.Deployment.xml
+C:\Users\Fluttershy\Documents\Visual Studio 2012\Projects\ConsoleApplication6\test\MusicSite\bin\System.Web.WebPages.Razor.xml
+C:\Users\Fluttershy\Documents\Visual Studio 2012\Projects\ConsoleApplication6\test\MusicSite\bin\ru\EntityFramework.resources.dll
+C:\Users\Fluttershy\Documents\Visual Studio 2012\Projects\ConsoleApplication6\test\MusicSite\bin\ru\System.Web.Helpers.resources.dll
+C:\Users\Fluttershy\Documents\Visual Studio 2012\Projects\ConsoleApplication6\test\MusicSite\bin\ru\System.Web.Mvc.resources.dll
+C:\Users\Fluttershy\Documents\Visual Studio 2012\Projects\ConsoleApplication6\test\MusicSite\bin\ru\System.Web.Providers.resources.dll
+C:\Users\Fluttershy\Documents\Visual Studio 2012\Projects\ConsoleApplication6\test\MusicSite\bin\ru\System.Web.Razor.resources.dll
+C:\Users\Fluttershy\Documents\Visual Studio 2012\Projects\ConsoleApplication6\test\MusicSite\bin\ru\System.Web.WebPages.resources.dll
+C:\Users\Fluttershy\Documents\Visual Studio 2012\Projects\ConsoleApplication6\test\MusicSite\bin\ru\System.Web.WebPages.Deployment.resources.dll
+C:\Users\Fluttershy\Documents\Visual Studio 2012\Projects\ConsoleApplication6\test\MusicSite\bin\ru\System.Web.WebPages.Razor.resources.dll
+C:\Users\Fluttershy\Documents\Visual Studio 2012\Projects\ConsoleApplication6\test\MusicSite\obj\Debug\MusicSite.csprojResolveAssemblyReference.cache
+C:\Users\Fluttershy\Documents\Visual Studio 2012\Projects\ConsoleApplication6\test\MusicSite\obj\Debug\MusicSite.dll
+C:\Users\Fluttershy\Documents\Visual Studio 2012\Projects\ConsoleApplication6\test\MusicSite\obj\Debug\MusicSite.pdb

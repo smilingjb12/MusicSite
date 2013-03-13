@@ -1,0 +1,152 @@
+﻿body
+{
+    font-size: .85em;
+    font-family: "Trebuchet MS", Verdana, Helvetica, Sans-Serif;
+    color: #232323;
+    background-color: #fff;
+}
+
+header,
+footer,
+nav,
+section {
+    display: block;
+}
+
+/* Styles for basic forms
+-----------------------------------------------------------*/
+
+fieldset 
+{
+    border:1px solid #ddd;
+    padding:0 1.4em 1.4em 1.4em;
+    margin:0 0 1.5em 0;
+}
+
+legend 
+{
+    font-size:1.2em;
+    font-weight: bold;
+}
+
+textarea 
+{
+    min-height: 75px;
+}
+
+.editor-label 
+{
+    margin: 1em 0 0 0;
+}
+
+.editor-field 
+{
+    margin:0.5em 0 0 0;
+}
+
+
+/* Styles for validation helpers
+-----------------------------------------------------------*/
+.field-validation-error
+{
+    color: #ff0000;
+}
+
+.field-validation-valid
+{
+    display: none;
+}
+
+.input-validation-error
+{
+    border: 1px solid #ff0000;
+    background-color: #ffeeee;
+}
+
+.validation-summary-errors
+{
+    font-weight: bold;
+    color: #ff0000;
+}
+
+.validation-summary-valid
+{
+    display: none;
+}
+
+/* MINE */
+body {
+    margin: 0;
+    padding: 0;
+    color: #333;
+}
+
+#page {
+    width: 1024px;
+    margin: 0 auto;
+    background: #f3f3f3;
+}
+
+#page header {
+    width: 100%;
+    height: 40px;
+    background: #333;
+    color: #ddd;
+}
+
+#page header a {
+    color: #ddd;
+}
+
+#page #content {
+    clear: both;
+    padding: 10px;
+}
+
+.header-right {
+    padding: 5px;
+    float: right;
+    margin-right: 30px;
+    line-height: 30px;
+}
+
+.header-right a {
+    padding-left: 20px;
+}
+
+.song {
+    padding: 5px;
+}
+
+.song .artist {
+    font-weight: bold;
+}
+
+#page footer {
+    background: #333;
+    color: #ddd;
+    height: 50px;
+}
+
+#page footer div {
+    position: relative;
+    padding-top: 50%;
+}
+
+.tag-cloud {
+    width: 200px;
+}
+
+.tag-cloud div {
+    display: inline-block;
+    padding: 3px;
+}
+
+.tag1 { font-size: 0.8em }
+.tag2 { font-size: 0.9em }
+.tag3 { font-size: 1em }
+.tag4 { font-size: 1.2em }
+.tag5 { font-size: 1.5em }
+.tag6 { font-size: 1.8em }
+.tag7 { font-size: 2.5em }
+.tag8 { font-size: 3.0em }

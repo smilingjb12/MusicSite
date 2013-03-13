@@ -1,0 +1,108 @@
+﻿@model MusicSite.Models.Domain.Song
+
+@{
+    ViewBag.Title = "Show";
+    Layout = "~/Views/Shared/_Foundation.cshtml";
+}
+
+<div class="row" style="height: 70px">
+    <div class="large-7 large-centered columns">
+    </div>
+</div>
+<div class="row">
+    <div class="large-8 large-centered columns">
+        <h3>@Model.Artist</h3>
+        <hr />
+            <h2>@Model.Title</h2>
+        <ul class="inline-list">
+            @foreach (var tag in Model.Tags)
+            {
+                <li>@Html.ActionLink(tag.Name, "Search", new { query = tag.Name }, new { @class = "small button" })</li>
+            }
+        </ul>
+        <hr />
+        <div class="large-3 large-offset-9 columns">
+            <div class="song">
+                @Html.HiddenFor(m => m.SongId)
+                <div class="likes">
+                    <img class="btn-like" src="@Url.Content("~/Content/Images/like2.png")" />
+                    <div class="likes-number">@Model.Likes</div>
+                </div>
+            </div>
+        </div>
+        <h5 class="subheader">Description:</h5>
+        <div style="display:none">
+            <div id="description-button-bar"></div>
+            <textarea id="description">@Model.Description</textarea>
+        </div>
+        <div id="description-preview">
+            @Model.Description
+        </div>
+    </div>
+</div>
+
+<link rel="stylesheet" href="@Url.Content("~/Content/Wmd/wmd.css")" />
+<script src="@Url.Content("~/Scripts/Wmd/wmd.js")"></script>
+<script src="@Url.Content("~/Scripts/Wmd/showdown.js")"></script>
+<script>
+    $(document).ready(function() {
+        setup_wmd({
+            input: 'description',
+            button_bar: 'description-button-bar',
+            preview: 'description-preview'
+        });
+        $('.wmd-code-button, .wmd-help-button, #description-button-bar').hide();
+        $('#description').hide();
+        $('#content-column').fadeIn();
+    });
+</script>
+
+@if (User.Identity.IsAuthenticated)
+{
+    <script>
+        $(function () {
+            console.log('LIKES ARE ENABLED');
+            var baseUrl = "@Url.RouteUrl(new { controller = "Song", action = "Like" })";
+
+            $('.btn-like').one('click', function () {
+                like(this);
+            });
+
+            function like(likeButton) {
+                console.log('LIKE()');
+                var song = $(likeButton).closest('.song');
+                var songId = song.find('#SongId').val();
+                console.log('clicked like for ' + songId);
+                var songUrl = baseUrl + "/" + songId;
+                console.log('song url: ' + songUrl);
+                var loadingImage = $('<img />')
+                    .attr({ width: 24, src: "@Url.Content("~/Content/Images/loading.gif")" })
+                    .addClass('img-loading');
+                song.find('.likes-number').after(loadingImage);
+                $.ajax({
+                    type: 'POST',
+                    url: songUrl,
+                    data: { songId: songId },
+                    success: function (data, status) {
+                        if (!data.error) {
+                            var likes = data.likes;
+                            console.log('returned likes: ' + likes);
+                            song.find('.img-loading').remove();
+                            song.find('.likes-number').text(likes).addClass('panel');
+                            $(likeButton).one('click', function () {
+                                like(likeButton);
+                            });
+                        }
+                    },
+                    error: function (data, status) {
+                        console.log('error');
+                        console.log('data:');
+                        console.log(data);
+                        console.log('status: ' + status);
+                    }
+                });
+            }
+        });
+    </script>
+}
+

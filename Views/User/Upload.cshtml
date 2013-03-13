@@ -1,0 +1,96 @@
+﻿@model MusicSite.Models.Domain.Song
+
+@{
+    ViewBag.Title = "Upload";
+    Layout = "~/Views/Shared/_Foundation.cshtml";
+}
+
+<div class="row" style="height: 90px">
+    <div class="large-6 large-centered columns">
+    </div>
+</div>
+<div class="row">
+	<div class="large-8 large-centered columns">
+		<h2 id="main-header" class="center-text">Drop mp3 file in the box</h2>
+        <hr />
+	</div>
+</div>
+<div class="row">
+	<div id="content-column" class="large-7 large-centered columns">
+		<div id="drop-area"></div>
+        <div id="progress-bar" class="progress round" style="display:none">
+            <span class="meter" style="width: 0%"></span>
+        </div>
+	</div>
+</div>
+
+<div data-alert class="alert-box alert" style="display:none">
+    <div class="text"></div>
+    <a href class="close">x</a>
+</div>
+
+<script src="@Url.Content("~/Scripts/jDataView/jdataview.js")"></script>
+<script src="@Url.Content("~/Scripts/Id3/binaryajax.js")"></script>
+<script src="@Url.Content("~/Scripts/Id3/id3.js")"></script>
+<script>
+    $(document).ready(function() {
+        var dropArea = document.getElementById('drop-area');
+        dropArea.style.backgroundImage = "url(@Url.Content("~/Content/Images/drop-placeholder.png"))";
+        var uploadUrl = "@Url.RouteUrl(new { controller = "User", action = "Upload" })";
+        console.log('url: ' + uploadUrl);
+        var $progressMeter = $('#progress-bar .meter');
+
+        dropArea.ondragover = function() {
+            return false;
+        };
+
+        dropArea.ondrop = function(e) {
+            e.preventDefault();
+            var file = e.dataTransfer.files[0];
+            if (!file || file.type != 'audio/mp3') {
+                alert('must be an mp3 file!');
+                return;
+            }
+
+            $(dropArea).fadeOut(function() {
+                $('#progress-bar').fadeIn(function() {
+                    uploadFile(file);
+                });
+            });
+        };
+
+        function uploadFile(file) {
+            console.log('uploadFile()');
+            console.log('file.name: ' + file.name);
+            var xhr = new XMLHttpRequest();
+            xhr.upload.addEventListener('progress', updateProgress, false);
+            xhr.onreadystatechange = stateChange;
+            xhr.open('POST', uploadUrl);
+            xhr.send(file);
+        }
+
+        function updateProgress(e) {
+            var percent = 100 * e.loaded / e.total;
+            $progressMeter.css('width', percent + '%');
+            console.log('progress: ' + percent);
+        }
+
+        function stateChange(e) {
+            if (e.target.readyState == 4) {
+                if (e.target.status == 200) {
+                    console.log('successfully uploaded');
+                    console.log(e);
+                    console.log(e.target.response);
+                    var response = e.target.response;
+                    var songId = JSON.parse(response).id;
+                    console.log('songId: ' + songId);
+                    $('.row').fadeOut(function() {
+                        window.location = "@Url.RouteUrl(new { controller = "Song", action = "Edit" })" + "/" + songId;
+                    });
+                } else {
+                    console.error('failed to upload');
+                }
+            }
+        }
+    });
+</script>

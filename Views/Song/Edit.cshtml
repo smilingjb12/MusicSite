@@ -1,0 +1,86 @@
+﻿@model MusicSite.Models.Domain.Song
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_Foundation.cshtml";
+}
+
+<div class="row" style="height: 70px">
+    <div class="large-6 large-centered columns">
+    </div>
+</div>
+<div class="row">
+	<div class="large-8 large-centered columns">
+		<h2 id="main-header" class="center-text">Edit song</h2>
+        <hr />
+	</div>
+</div>
+<div class="row">
+	<div id="content-column" class="large-8 large-centered columns" style="display:none">
+		 @using (Html.BeginForm())
+        {
+            <fieldset>
+                <legend>Song info</legend>
+                    @Html.HiddenFor(m => m.SongId)
+                    <div class="row">
+                        <div class="large-8 columns">
+                            @Html.LabelFor(m => m.Artist)
+                            @Html.TextBoxFor(m => m.Artist)
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="large-8 columns">
+                            @Html.LabelFor(m => m.Title)
+                            @Html.TextBoxFor(m => m.Title)
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="large-10 columns">
+                            @Html.LabelFor(m => m.Tags, "List of tags, separated by comas")
+                            @if (Model.Tags.Count > 0)
+                            {
+                                @Html.TextBox("Tags", Model.Tags.Select(tag => tag.Name).Aggregate((acc, str) => acc + ", " + str))
+                            }
+                            else
+                            {
+                                @Html.TextBox("Tags", "")   
+                            }
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="large-10 columns">
+                            @Html.LabelFor(m => m.Description)
+                            <div id="description-button-bar"></div>
+                            @Html.TextAreaFor(m => m.Description)
+                            <h6 class="subheader">Preview</h6>
+                            <div id="description-preview"></div>
+                        </div>
+                    </div>
+                <input type="submit" value="Save" class="button" />
+            </fieldset>
+        }
+	</div>
+</div>
+
+<div class="row">
+    <div class="large-6 large-centered columns">
+        @Html.CustomValidationSummary(ViewData.ModelState)
+    </div>
+</div>
+
+<link rel="stylesheet" href="@Url.Content("~/Content/Wmd/wmd.css")" />
+<script src="@Url.Content("~/Scripts/Wmd/wmd.js")"></script>
+<script src="@Url.Content("~/Scripts/Wmd/showdown.js")"></script>
+<script>
+    $(document).ready(function() {
+        setup_wmd({
+            input: 'Description',
+            button_bar: 'description-button-bar',
+            preview: 'description-preview'
+        });
+        $('.wmd-code-button, .wmd-help-button, #description-button-bar').hide();
+        $('input').first().focus();
+        $('#content-column').fadeIn();
+    });
+</script>
+       

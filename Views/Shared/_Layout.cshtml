@@ -1,0 +1,22 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>@ViewBag.Title</title>
+    <link href="@Url.Content("~/Content/Site.css")" rel="stylesheet" type="text/css" />
+    <script src="@Url.Content("~/Scripts/jquery-1.7.1.min.js")" type="text/javascript"></script>
+</head>
+
+<body>
+    <section id="page">
+        <header>
+            <div class="header-right">
+                <a href="#">Login</a>
+                <a href="#">Sign up</a>
+            </div>
+        </header>
+        <section id="content">
+            @RenderBody()
+        </section>
+    </section>
+</body>
+</html>

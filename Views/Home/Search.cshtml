@@ -1,0 +1,99 @@
+﻿@model string
+
+@{
+    ViewBag.Title = "Search";
+    Layout = "~/Views/Shared/_Foundation.cshtml";
+}
+
+<div class="row" style="height: 70px">
+    <div class="large-8 large-centered columns">
+    </div>
+</div>
+<div class="row">
+    <div class="large-8 large-centered columns">
+        <h2 class="center-text">Search</h2>
+        <hr />
+    </div>
+</div>
+ <div class="row">
+    <div class="large-9 large-centered columns">
+      <div class="row collapse">
+        <div class="small-9 columns">
+          <input id="txt-search" type="text" placeholder="Type in artist or song name" />
+        </div>
+        <div class="small-2 columns" id="btn-search">
+          <a href="#" class="button prefix">Search</a>
+        </div>
+        <div class="small-1 columns">
+            <img id="img-loading" src="@Url.Content("~/Content/Images/loading.gif")" style="display:none" />
+        </div>
+
+        <table id="table-results">
+            <tbody>
+            </tbody>
+        </table>
+      </div>
+    </div>
+</div>
+
+
+<script>
+    $(function() {
+        $('#txt-search').val("@Model").focus();
+        $('#txt-search').keyup(function() {
+            search();
+        });
+        $('#btn-search').click(function() {
+            search();
+        });
+        search();
+
+        function search() {
+            console.log('search');
+            var routeUrl = "@Url.RouteUrl(new { controller = "Home", action = "GetSongs" })";
+            var query = $('#txt-search').val().trim().replace(/\s+/, ' ');
+            if (query == '') return;
+            $('#img-loading').show();
+            $.ajax({
+                type: 'POST',
+                url: routeUrl,
+                data: query,
+                success: function(data, status) {
+                    if (!data.error) {
+                        setTimeout(function() { $('#img-loading').hide() }, 1000);
+                        fillTable(data.songs);
+                    }
+                },
+                error: function(data, status) {
+                    console.log('error');
+                    console.log('data:');
+                    console.log(data);
+                    console.log('status: ' + status);
+                }
+            });
+        }
+
+        function fillTable(songs) {
+            var $table = $('#table-results');
+            $table.find('tr').remove();
+            for (var i = 0; i < songs.length; ++i) {
+                $table.append(createRow(songs[i]));
+            }
+        }
+
+        function createRow(song) {
+            $row = $('<tr />');
+            $('<td />').attr('width', 470).html(song.Artist + ' — ' + createSongLink(song)).appendTo($row);
+            $('<td />').html('<a href="Song/Download/' + song.SongId + '">Download</a>').appendTo($row);
+            $('<td />').html('<a href="#">Add to playlist</a>').appendTo($row);
+            return $row;
+        }
+
+        function createSongLink(song) {
+            var link = $('<a />').attr('href', 'Song/Show/' + song.SongId).text(song.Title)[0].outerHTML;
+            console.log('link:');
+            console.log(link);
+            return link;
+        }
+    });
+</script>

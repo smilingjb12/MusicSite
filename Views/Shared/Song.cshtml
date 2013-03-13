@@ -1,0 +1,29 @@
+﻿@model MusicSite.Models.Domain.Song
+
+<div class="song">
+    <div class="full-title-container">
+        <span class="artist">@Html.RouteLink(@Model.Artist, new { controller = "Home", action = "Search", query = Model.Artist })</span>
+        <span>—</span>
+        <span class="title">@Html.RouteLink(@Model.Title, new { controller = "Song", action = "Show", id = Model.SongId })</span>
+    </div>
+    @Html.HiddenFor(m => m.SongId)
+    @if (User.Identity.IsAuthenticated)
+    {
+        <div class="likes">
+            <img class="btn-like" src="@Url.Content("~/Content/Images/like2.png")" />
+            <div class="likes-number">@Model.Likes</div>
+        </div>
+        <ul class="inline-list">
+            <li><a href="#">Add to playlist</a></li>
+            <li>@Html.ActionLink("Download", "Song", new { id = Model.SongId })</li>
+        </ul>
+    }
+    <ul class="inline-list">
+    @foreach (var tag in Model.Tags.Take(4))
+    {
+        <li>@Html.ActionLink(tag.Name, "Search", new { query = tag.Name }, new { @class = "small button" })</li>
+    }
+    </ul>
+    <hr />
+</div>
+

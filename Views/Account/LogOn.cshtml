@@ -1,0 +1,51 @@
+﻿@model MusicSite.Models.Domain.User
+
+@{
+    ViewBag.Title = "Log on";
+    Layout = "~/Views/Shared/_Foundation.cshtml";
+}
+
+<div class="row" style="height: 70px">
+    <div class="large-6 large-centered columns">
+    </div>
+</div>
+<div class="row">
+    <div class="large-6 large-centered columns">
+        <h2 class="center-text">Sign in</h2>
+    </div>
+</div>
+<div class="row">
+    <div class="large-6 large-centered columns">
+        @using (Html.BeginForm())
+        {
+            <fieldset>
+                <legend>Your account info</legend>
+                    <div class="row">
+                        <div class="large-12 columns">
+                            @Html.LabelFor(m => m.Name)
+                            @Html.TextBoxFor(m => m.Name)
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="large-12 columns">
+                            @Html.LabelFor(m => m.Password)
+                            @Html.PasswordFor(m => m.Password)
+                        </div>
+                    </div>
+                <input type="submit" value="Sign in" class="button" />
+            </fieldset>
+        }
+    </div>
+</div>
+
+<div class="row">
+    <div class="large-6 large-centered columns">
+        @Html.CustomValidationSummary(ViewData.ModelState)
+    </div>
+</div>
+
+<script>
+    $(document).ready(function() {
+        $('input').first().focus();
+    });
+</script>

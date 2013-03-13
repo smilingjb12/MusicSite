@@ -1,0 +1,154 @@
+﻿@model MusicSite.Models.UserShowViewModel
+
+@{
+    ViewBag.Title = "Profile";
+    Layout = "~/Views/Shared/_Foundation.cshtml";
+}
+
+<div class="row">
+	<div class="large-12 columns">
+		<h2>Hello, @Model.User.Name</h2>
+		<hr />
+	</div>
+</div>
+<div class="row">
+    <div class="large-5 columns">
+        <h4>Uploaded songs</h4>
+        <table>
+            <tbody>
+                @foreach (var song in Model.UploadedSongs.Take(10))
+                {
+                    <tr>
+                        <td width="30">@(Model.UploadedSongs.IndexOf(song) + 1)</td>
+                        <td width="300">@song.Artist — @Html.RouteLink(song.Title, new { controller = "Song", action = "Show", id = song.SongId })</td>
+                        <td>@Html.RouteLink("Download", new { controller = "Song", action = "Download", id = song.SongId })</td>
+                        <td>@Html.RouteLink("Edit", new { controller = "Song", action = "Edit", id = song.SongId })
+                    </tr>
+                }
+                @if (Model.UploadedSongs.Count == 0)
+                {
+                    <tr>
+                        <td width="290">None</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        <h4>Recent tracks</h4>
+        @foreach (var song in Model.RecentSongs)
+        {
+            @Html.Partial("Song", song)
+        }
+        @if (Model.RecentSongs.Count == 0)
+        {
+            <div class="panel">None</div>
+        }
+    </div>
+    <div class="large-6 large-offset-1 columns">
+        <div id="chart-overall">
+        </div>
+    </div>
+</div>
+
+@if (Model.ActivityShare.HasAny)
+{
+<script src="@Url.Content("~/Scripts/Highcharts/highcharts.js")"></script>
+<script>
+    $(document).ready(function() {
+        var chart;
+        chart = new Highcharts.Chart({
+            chart: {
+                renderTo: 'chart-overall',
+                plotBackgroundColor: null,
+                plotBorderWidth: null,
+                plotShadow: false
+            },
+            title: {
+                text: "@Model.User.Name's activity"
+            },
+            tooltip: {
+                pointFormat: '{series.name}: <b>{point.percentage}%</b>',
+                percentageDecimals: 1
+            },
+            plotOptions: {
+                pie: {
+                    allowPointSelect: true,
+                    cursor: 'pointer',
+                    dataLabels: {
+                        enabled: true,
+                    },
+                    showInLegend: true
+                }
+            },
+            series: [{
+                type: 'pie',
+                name: 'Activity share',
+                data: [
+                    ['Downloads', @Model.ActivityShare.DownloadShare],
+                    ['Uploads', @Model.ActivityShare.UploadShare],
+                    ['Listenings', @Model.ActivityShare.ListeningShare],
+                ]
+            }],
+            exporting: {
+                enabled: false
+            }
+        });
+    });
+</script>
+}
+else
+{
+    <script>
+        $(function() {
+            var $panel = $('<div />').addClass('panel').text('No activites so far');
+            $('#chart-overall').append($panel);
+        });
+    </script>
+}
+
+@if (User.Identity.IsAuthenticated)
+{
+    <script>
+        $(function () {
+            var baseUrl = "@Url.RouteUrl(new { controller = "Song", action = "Like" })";
+
+            $('.btn-like').one('click', function () {
+                like(this);
+            });
+
+            function like(likeButton) {
+                console.log('LIKE()');
+                var song = $(likeButton).closest('.song');
+                var songId = song.find('#SongId').val();
+                console.log('clicked like for ' + songId);
+                var songUrl = baseUrl + "/" + songId;
+                console.log('song url: ' + songUrl);
+                var loadingImage = $('<img />')
+                    .attr({ width: 24, src: "@Url.Content("~/Content/Images/loading.gif")" })
+                    .addClass('img-loading');
+                song.find('.likes-number').after(loadingImage);
+                $.ajax({
+                    type: 'POST',
+                    url: songUrl,
+                    data: { songId: songId },
+                    success: function (data, status) {
+                        if (!data.error) {
+                            var likes = data.likes;
+                            console.log('returned likes: ' + likes);
+                            song.find('.img-loading').remove();
+                            song.find('.likes-number').text(likes).addClass('panel');
+                            $(likeButton).one('click', function () {
+                                like(likeButton);
+                            });
+                        }
+                    },
+                    error: function (data, status) {
+                        console.log('error');
+                        console.log('data:');
+                        console.log(data);
+                        console.log('status: ' + status);
+                    }
+                });
+            }
+        });
+    </script>
+}

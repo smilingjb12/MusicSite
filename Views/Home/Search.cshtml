@@ -84,13 +84,13 @@
         function createRow(song) {
             $row = $('<tr />');
             $('<td />').attr('width', 470).html(song.Artist + ' — ' + createSongLink(song)).appendTo($row);
-            $('<td />').html('<a href="Song/Download/' + song.SongId + '">Download</a>').appendTo($row);
+            $('<td />').html('<a href="/Song/Download/' + song.SongId + '">Download</a>').appendTo($row);
             $('<td />').html('<a href="#">Add to playlist</a>').appendTo($row);
             return $row;
         }
 
         function createSongLink(song) {
-            var link = $('<a />').attr('href', 'Song/Show/' + song.SongId).text(song.Title)[0].outerHTML;
+            var link = $('<a />').attr('href', '/Song/Show/' + song.SongId).text(song.Title)[0].outerHTML;
             console.log('link:');
             console.log(link);
             return link;

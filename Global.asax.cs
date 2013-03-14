@@ -23,14 +23,8 @@ namespace MusicSite
 
             routes.MapRoute(
                 "",
-                "{controller}/{action}",
-                new { controller = "Home", action = "Search" }
-            );
-
-            routes.MapRoute(
-                "Default", // Имя маршрута
-                "{controller}/{action}/{id}", // URL-адрес с параметрами
-                new { controller = "Home", action = "Index", id = UrlParameter.Optional } // Параметры по умолчанию
+                "{controller}/{action}/{param}",
+                new { controller = "Home", action = "Index", param = UrlParameter.Optional }
             );
 
         }

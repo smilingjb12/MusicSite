@@ -97,7 +97,7 @@ namespace MusicSite.Controllers
 
         public ActionResult Show(int id)
         {
-            Song song = repository.AllSongs.FirstOrDefault(s => s.SongId == id);
+            Song song = repository.FindSongById(id);
             if (song == null)
             {
                 return HttpNotFound();
@@ -107,12 +107,12 @@ namespace MusicSite.Controllers
 
         public ActionResult Download(int id)
         {
-            Song song = repository.AllSongs.FirstOrDefault(s => s.SongId == id);
+            Song song = repository.FindSongById(id);
             if (song == null)
             {
                 return HttpNotFound();
             }
-            User downloader = repository.AllUsers.First(u => u.Name == HttpContext.User.Identity.Name);
+            User downloader = repository.FindUserByName(User.Identity.Name);
             var downloadInfo = new DownloadInfo { Date = DateTime.Now, User = downloader, Song = song };
             downloader.DownloadInfos.Add(downloadInfo);
             repository.UpdateUser(downloader);

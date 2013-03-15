@@ -7,7 +7,7 @@ using MusicSite.Models.Domain;
 
 namespace MusicSite.Models
 {
-    public class DatabaseInitializer : DropCreateDatabaseAlways<DatabaseContext>
+    public class DatabaseInitializer : DropCreateDatabaseIfModelChanges<DatabaseContext>
     {
         protected override void Seed(DatabaseContext context)
         {

@@ -2,7 +2,10 @@
 
 <div class="song">
     <div class="full-title-container">
-        <span class="artist">@Html.RouteLink(@Model.Artist, new { controller = "Home", action = "Search", query = Model.Artist })</span>
+        <span class="artist">
+            <a href="@Model.ServerPath" title="Play" class="sm2_button"></a> 
+            @Html.RouteLink(@Model.Artist, new { controller = "Home", action = "Search", query = Model.Artist })
+        </span>
         <span>—</span>
         <span class="title">@Html.RouteLink(@Model.Title, new { controller = "Song", action = "Show", id = Model.SongId })</span>
     </div>
@@ -14,7 +17,6 @@
             <div class="likes-number">@Model.Likes</div>
         </div>
         <ul class="inline-list">
-            <li><a href="#">Add to playlist</a></li>
             <li>@Html.ActionLink("Download", "Song", new { id = Model.SongId })</li>
         </ul>
     }

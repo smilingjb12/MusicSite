@@ -17,6 +17,7 @@
                     {
                         <tr>
                             <td width="30">@(Model.IndexOf(song) + 1)</td>
+                            <td><a href="@song.ServerPath" title="Play" class="sm2_button"></a></td>
                             <td width="500">@song.Artist – @Html.RouteLink(song.Title, new { controller = "Song", action = "Show", id = song.SongId })</td>
                             <td>@Html.RouteLink("Download", new { controller = "Song", action = "Download", id = song.SongId })</td>
                             <td>@Html.RouteLink("Edit", new { controller = "Song", action = "Edit", id = song.SongId })

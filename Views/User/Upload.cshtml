@@ -85,7 +85,7 @@
                     var songId = JSON.parse(response).id;
                     console.log('songId: ' + songId);
                     $('.row').fadeOut(function() {
-                        window.location = "@Url.RouteUrl(new { controller = "Song", action = "Edit" })" + "/" + songId;
+                        window.location = "/Song/Edit/" + songId;
                     });
                 } else {
                     console.error('failed to upload');

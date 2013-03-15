@@ -28,11 +28,9 @@ namespace MusicSite.Controllers
                 string query = Request.Form[0].ToLower();
                 List<Song> songs = new List<Song>();
                 IEnumerable<Song> matchedSongs = repository.AllSongs.Where(s => s.Artist.ToLower().Contains(query) || s.Title.ToLower().Contains(query));
-                foreach (Song song in matchedSongs)
-                {
-                    songs.Add(new Song { Artist = song.Artist, Title = song.Title, SongId = song.SongId });
-                }
-                return Json(new { songs = songs.Take(100) });
+                var serializedSongs = from song in matchedSongs
+                                      select new { song.SongId, song.Artist, song.Title, song.ServerPath };
+                return Json(new { songs = serializedSongs });
             }
             else
             {

@@ -22,11 +22,16 @@ namespace MusicSite
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapRoute(
-                "",
-                "{controller}/{action}/{param}",
-                new { controller = "Home", action = "Index", param = UrlParameter.Optional }
+                "Default", // Имя маршрута
+                "{controller}/{action}/{id}", // URL-адрес с параметрами
+                new { controller = "Home", action = "Index", id = UrlParameter.Optional } // Параметры по умолчанию
             );
 
+            routes.MapRoute(
+                "", // Имя маршрута
+                "{controller}/{action}/{query}", // URL-адрес с параметрами
+                null
+            );
         }
 
         protected void Application_Start()

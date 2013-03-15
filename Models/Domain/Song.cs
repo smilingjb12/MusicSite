@@ -45,5 +45,10 @@ namespace MusicSite.Models.Domain
             Tags.ToList().ForEach(tag => sb.AppendFormat("{0} ", tag.Name));
             return sb.ToString();
         }
+
+        public string ServerPath
+        {
+            get { return FilePath != null ? FilePath.Substring(FilePath.IndexOf("\\Content")).Replace("\\", "/") : ""; }
+        }
     }
 }

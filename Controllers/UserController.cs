@@ -58,7 +58,7 @@ namespace MusicSite.Controllers
         {
             byte[] fileBytes = FileUtils.ReadBytesFromStream(HttpContext.Request.InputStream);
             string fileName = string.Format("{0}.mp3", Guid.NewGuid());
-            string path = Path.Combine(Server.MapPath("~/App_Data/Uploads"), fileName);
+            string path = Path.Combine(Server.MapPath("~/Content/Uploads"), fileName);
             System.IO.File.WriteAllBytes(path, fileBytes);
             Id3Info info = Mp3Parser.GetMetaInfo(path);
             Song uploadedSong = new Song

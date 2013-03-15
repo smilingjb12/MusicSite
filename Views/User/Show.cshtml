@@ -27,6 +27,7 @@
                     {
                         <tr>
                             <td width="30">@(Model.UploadedSongs.IndexOf(song) + 1)</td>
+                            <td><a href="@song.ServerPath" title="Play" class="sm2_button"></a></td>
                             <td width="350">@song.Artist – @SongLink(song.Title, song.SongId)</td>
                             <td>@Html.RouteLink("Download", new { controller = "Song", action = "Download", id = song.SongId })</td>
                             <td>@Html.RouteLink("Edit", new { controller = "Song", action = "Edit", id = song.SongId })
@@ -89,7 +90,7 @@
                 plotShadow: false
             },
             title: {
-                text: "@Model.User.Name's activity"
+                text: "@Model.User.Name's activity share"
             },
             tooltip: {
                 pointFormat: '{series.name}: <b>{point.percentage}%</b>',

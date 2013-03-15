@@ -12,7 +12,12 @@ namespace MusicSite.Controllers
 {
     public class AccountController : Controller
     {
-        private Repository repository = new Repository();
+        private IRepository repository;
+
+        public AccountController(IRepository repository)
+        {
+            this.repository = repository;
+        }
 
         private ActionResult RenderViewIfNotAuthenticated()
         {
@@ -104,12 +109,6 @@ namespace MusicSite.Controllers
         {
             FormsAuthentication.SignOut();
             return RedirectToAction("Index", "Home");
-        }
-
-        protected override void Dispose(bool disposing)
-        {
-            repository.Dispose();
-            base.Dispose(disposing);
         }
     }
 }

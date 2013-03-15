@@ -14,7 +14,12 @@ namespace MusicSite.Controllers
     [Authorize(Roles="User")]
     public class SongController : Controller
     {
-        private Repository repository = new Repository();
+        private IRepository repository;
+
+        public SongController(IRepository repository)
+        {
+            this.repository = repository;
+        }
 
         [HttpPost]
         public JsonResult Like(int songId)
@@ -117,12 +122,6 @@ namespace MusicSite.Controllers
             downloader.DownloadInfos.Add(downloadInfo);
             repository.UpdateUser(downloader);
             return File(song.FilePath, "audio/mpeg", Path.GetFileName(song.FilePath));
-        }
-
-        protected override void Dispose(bool disposing)
-        {
-            repository.Dispose();
-            base.Dispose(disposing);
         }
     }
 }

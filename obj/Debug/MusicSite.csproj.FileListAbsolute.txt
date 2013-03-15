@@ -79,3 +79,9 @@ C:\Users\Fluttershy\Documents\Visual Studio 2012\Projects\ConsoleApplication6\te
 C:\Users\Fluttershy\Documents\Visual Studio 2012\Projects\ConsoleApplication6\test\MusicSite\obj\Debug\MusicSite.csprojResolveAssemblyReference.cache
 C:\Users\Fluttershy\Documents\Visual Studio 2012\Projects\ConsoleApplication6\test\MusicSite\obj\Debug\MusicSite.dll
 C:\Users\Fluttershy\Documents\Visual Studio 2012\Projects\ConsoleApplication6\test\MusicSite\obj\Debug\MusicSite.pdb
+C:\Users\Fluttershy\documents\visual studio 2012\Projects\ConsoleApplication6\MusicSite\bin\Moq.dll
+C:\Users\Fluttershy\documents\visual studio 2012\Projects\ConsoleApplication6\MusicSite\bin\Ninject.dll
+C:\Users\Fluttershy\documents\visual studio 2012\Projects\ConsoleApplication6\MusicSite\bin\Moq.pdb
+C:\Users\Fluttershy\documents\visual studio 2012\Projects\ConsoleApplication6\MusicSite\bin\Moq.xml
+C:\Users\Fluttershy\documents\visual studio 2012\Projects\ConsoleApplication6\MusicSite\bin\Ninject.pdb
+C:\Users\Fluttershy\documents\visual studio 2012\Projects\ConsoleApplication6\MusicSite\bin\Ninject.xml

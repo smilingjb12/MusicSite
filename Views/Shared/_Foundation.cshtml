@@ -46,25 +46,23 @@
                 padding: 0;
             }
         </style>
-        using (var rep = new MusicSite.Models.Repository())
+        var rep = new MusicSite.Models.MusicRepository();
+        <div id="debug">
+        <p>Users:</p>
+        @if (rep.AllUsers.Count() == 0) 
         {
-            <div id="debug">
-            <p>Users:</p>
-            @if (rep.AllUsers.Count() == 0) 
-            {
-                <p>None</p>   
-            }
-            else
-            {
-                foreach (var user in rep.AllUsers)
-                {
-                    <p>-- Name: @user.Name</p>
-                    <p>Password: @user.Password</p>
-                    <p>IsActivated: @user.IsActivated</p>
-                }
-            }
-            </div>
+            <p>None</p>   
         }
+        else
+        {
+            foreach (var user in rep.AllUsers)
+            {
+                <p>-- Name: @user.Name</p>
+                <p>Password: @user.Password</p>
+                <p>IsActivated: @user.IsActivated</p>
+            }
+        }
+        </div>
     }
 
     @RenderBody()

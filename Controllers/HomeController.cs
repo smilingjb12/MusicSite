@@ -11,7 +11,12 @@ namespace MusicSite.Controllers
 {
     public class HomeController : Controller
     {
-        private Repository repository = new Repository();
+        private IRepository repository;
+
+        public HomeController(IRepository repository)
+        {
+            this.repository = repository;
+        }
 
         [Authorize(Roles="User")]
         public ViewResult Search(string query)
@@ -44,16 +49,11 @@ namespace MusicSite.Controllers
                 .OrderByDescending(song => song.Likes)
                 .Take(5);
 
-            var tagCloud = repository.GetTagCloud();
+            var tagCloudBuilder = new TagCloudBuilder(this.repository);
+            var tagCloud = tagCloudBuilder.GetTagCloud();
             List<MenuTag> tags = tagCloud.MenuTags;
             ViewBag.TagCloudItems = tagCloud.MenuTags;
             return View(topSongs);
-        }
-
-        protected override void Dispose(bool disposing)
-        {
-            repository.Dispose();
-            base.Dispose(disposing);
         }
     }
 }

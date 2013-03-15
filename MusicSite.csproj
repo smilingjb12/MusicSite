@@ -42,6 +42,12 @@
     <Reference Include="Microsoft.Web.Optimization">
       <HintPath>..\packages\Microsoft.Web.Optimization.0.1\lib\net40\Microsoft.Web.Optimization.dll</HintPath>
     </Reference>
+    <Reference Include="Moq">
+      <HintPath>..\packages\Moq.4.0.10827\lib\NET40\Moq.dll</HintPath>
+    </Reference>
+    <Reference Include="Ninject">
+      <HintPath>..\packages\Ninject.3.0.1.10\lib\net45-full\Ninject.dll</HintPath>
+    </Reference>
     <Reference Include="System.Data.Entity" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
@@ -126,10 +132,13 @@
     <Compile Include="Models\FileUtils.cs" />
     <Compile Include="Models\HtmlHelperExtensions.cs" />
     <Compile Include="Models\Id3Info.cs" />
+    <Compile Include="Models\IRepository.cs" />
     <Compile Include="Models\MenuTag.cs" />
     <Compile Include="Models\Mp3Parser.cs" />
-    <Compile Include="Models\Repository.cs" />
+    <Compile Include="Models\NinjectControllerFactory.cs" />
+    <Compile Include="Models\MusicRepository.cs" />
     <Compile Include="Models\TagCloud.cs" />
+    <Compile Include="Models\TagCloudBuilder.cs" />
     <Compile Include="Models\UserShowViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

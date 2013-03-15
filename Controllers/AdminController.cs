@@ -11,7 +11,12 @@ namespace MusicSite.Controllers
     [Authorize(Roles="Admin")]
     public class AdminController : Controller
     {
-        private Repository repository = new Repository();
+        private IRepository repository;
+
+        public AdminController(IRepository repository)
+        {
+            this.repository = repository;
+        }
 
         public ActionResult Users()
         {
@@ -25,12 +30,6 @@ namespace MusicSite.Controllers
             repository.RemoveUser(user.UserId);
             TempData["notice"] = string.Format("User account with name {0} has been deleted", user.Name);
             return RedirectToAction("Users");
-        }
-
-        protected override void Dispose(bool disposing)
-        {
-            repository.Dispose();
-            base.Dispose(disposing);
         }
     }
 }

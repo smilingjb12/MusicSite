@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Security;
+using Ninject;
 
 namespace MusicSite.Models
 {
@@ -11,25 +12,23 @@ namespace MusicSite.Models
     {
         public override bool ValidateUser(string username, string password)
         {
-            using (var repository = new Repository())
+            var repository = new MusicRepository();
+            if (string.IsNullOrEmpty(password.Trim()))
             {
-                if (string.IsNullOrEmpty(password.Trim()))
-                {
-                    return false;
-                }
-                User user = repository.AllUsers.FirstOrDefault(u => u.Name == username);
-                if (user == null)
-                {
-                    return false;
-                }
-                if (user.Password == password)
-                {
-                    return true;
-                }
-                else
-                {
-                    return false;
-                }
+                return false;
+            }
+            User user = repository.AllUsers.FirstOrDefault(u => u.Name == username);
+            if (user == null)
+            {
+                return false;
+            }
+            if (user.Password == password)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
             }
         }
 

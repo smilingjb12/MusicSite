@@ -14,7 +14,12 @@ namespace MusicSite.Controllers
     [Authorize(Roles="User")]
     public class UserController : Controller
     {
-        private Repository repository = new Repository();
+        private IRepository repository;
+
+        public UserController(IRepository repository)
+        {
+            this.repository = repository;
+        }
 
         public ViewResult Show()
         {
@@ -75,12 +80,6 @@ namespace MusicSite.Controllers
             repository.UpdateUser(uploader);
 
             return Json(new { id = uploadedSong.SongId });
-        }
-
-        protected override void Dispose(bool disposing)
-        {
-            repository.Dispose();
-            base.Dispose(disposing);
         }
     }
 }

@@ -11,17 +11,15 @@ namespace MusicSite.Models
     {
         public override string[] GetRolesForUser(string username)
         {
-            using (var rep = new Repository())
+            var rep = new MusicRepository();
+            User user = rep.AllUsers.First(u => u.Name == username);
+            if (user.Role == "Admin")
             {
-                User user = rep.AllUsers.First(u => u.Name == username);
-                if (user.Role == "Admin")
-                {
-                    return new[] { "Admin", "User" };
-                }
-                else
-                {
-                    return new[] { "User" };
-                }
+                return new[] { "Admin", "User" };
+            }
+            else
+            {
+                return new[] { "User" };
             }
         }
 

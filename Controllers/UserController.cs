@@ -41,6 +41,16 @@ namespace MusicSite.Controllers
             return View(model);
         }
 
+        [HttpPost]
+        public JsonResult AddListen(int songId)
+        {
+            User user = repository.FindUserByName(User.Identity.Name);
+            Song song = repository.FindSongById(songId);
+            user.ListenInfos.Add(new ListenInfo { Date = DateTime.Now, Song = song, User = user });
+            repository.SaveChanges();
+            return Json(new { listenings = user.ListenInfos.Count });
+        }
+
         public ViewResult Upload()
         { 
             return View();
@@ -61,7 +71,7 @@ namespace MusicSite.Controllers
         [HttpPost]
         public JsonResult Upload(HttpPostedFileBase file)
         {
-            byte[] fileBytes = FileUtils.ReadBytesFromStream(HttpContext.Request.InputStream);
+            byte[] fileBytes = FileUtils.ReadBytesFromStream(Request.InputStream);
             string fileName = string.Format("{0}.mp3", Guid.NewGuid());
             string path = Path.Combine(Server.MapPath("~/Content/Uploads"), fileName);
             System.IO.File.WriteAllBytes(path, fileBytes);
@@ -75,7 +85,7 @@ namespace MusicSite.Controllers
                 Tags = new List<Tag> { new Tag { Name = info.Artist } }
             };
             repository.AddSong(uploadedSong);
-            User uploader = repository.FindUserByName(HttpContext.User.Identity.Name);
+            User uploader = repository.FindUserByName(User.Identity.Name);
             uploader.UploadInfos.Add(new UploadInfo { Date = DateTime.Now, Song = uploadedSong, User = uploader });
             repository.UpdateUser(uploader);
 

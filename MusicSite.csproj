@@ -117,6 +117,7 @@
     </Compile>
     <Compile Include="Models\ActivityInfo.cs" />
     <Compile Include="Models\ActivityShare.cs" />
+    <Compile Include="Models\AdminUsersViewModel.cs" />
     <Compile Include="Models\CustomMembershipProvider.cs" />
     <Compile Include="Models\CustomRoleProvider.cs" />
     <Compile Include="Models\DatabaseContext.cs" />
@@ -137,6 +138,7 @@
     <Compile Include="Models\Mp3Parser.cs" />
     <Compile Include="Models\NinjectControllerFactory.cs" />
     <Compile Include="Models\MusicRepository.cs" />
+    <Compile Include="Models\PagingInfo.cs" />
     <Compile Include="Models\TagCloud.cs" />
     <Compile Include="Models\TagCloudBuilder.cs" />
     <Compile Include="Models\UserShowViewModel.cs" />

@@ -18,7 +18,6 @@ C:\Users\Fluttershy\documents\visual studio 2012\Projects\ConsoleApplication6\Mu
 C:\Users\Fluttershy\documents\visual studio 2012\Projects\ConsoleApplication6\MusicSite\bin\System.Web.WebPages.Razor.xml
 C:\Users\Fluttershy\documents\visual studio 2012\Projects\ConsoleApplication6\MusicSite\bin\ru\EntityFramework.resources.dll
 C:\Users\Fluttershy\documents\visual studio 2012\Projects\ConsoleApplication6\MusicSite\bin\ru\System.Web.Providers.resources.dll
-C:\Users\Fluttershy\documents\visual studio 2012\Projects\ConsoleApplication6\MusicSite\obj\Debug\MusicSite.csprojResolveAssemblyReference.cache
 C:\Users\Fluttershy\documents\visual studio 2012\Projects\ConsoleApplication6\MusicSite\obj\Debug\MusicSite.dll
 C:\Users\Fluttershy\documents\visual studio 2012\Projects\ConsoleApplication6\MusicSite\obj\Debug\MusicSite.pdb
 C:\Users\Fluttershy\documents\visual studio 2012\Projects\ConsoleApplication6\MusicSite\bin\Microsoft.Web.Optimization.dll
@@ -85,3 +84,4 @@ C:\Users\Fluttershy\documents\visual studio 2012\Projects\ConsoleApplication6\Mu
 C:\Users\Fluttershy\documents\visual studio 2012\Projects\ConsoleApplication6\MusicSite\bin\Moq.xml
 C:\Users\Fluttershy\documents\visual studio 2012\Projects\ConsoleApplication6\MusicSite\bin\Ninject.pdb
 C:\Users\Fluttershy\documents\visual studio 2012\Projects\ConsoleApplication6\MusicSite\bin\Ninject.xml
+C:\Users\Fluttershy\documents\visual studio 2012\Projects\ConsoleApplication6\MusicSite\obj\Debug\MusicSite.csprojResolveAssemblyReference.cache

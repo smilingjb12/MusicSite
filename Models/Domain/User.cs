@@ -54,7 +54,8 @@ namespace MusicSite.Models.Domain
 
         public List<Song> GetUploadedSongs()
         {
-            return UploadInfos.Select(info => info.Song).ToList();
+            return UploadInfos.OrderByDescending(info => info.Date)
+                .Select(info => info.Song).ToList();
         }
 
         public ActivityShare GetActivityShare()
@@ -81,7 +82,7 @@ namespace MusicSite.Models.Domain
         public List<ActivityInfo> GetActivities()
         {
             var activities = new List<ActivityInfo>();
-            var listenActivities = ListenInfos.Select(info => new ActivityInfo { Event = "Listened to", Date = info.Date, Song = info.Song });
+            var listenActivities = ListenInfos.Select(info => new ActivityInfo { Event = "Listened", Date = info.Date, Song = info.Song });
             var uploadActivities = UploadInfos.Select(info => new ActivityInfo { Event = "Uploaded", Date = info.Date, Song = info.Song });
             var downloadActivities = DownloadInfos.Select(info => new ActivityInfo { Event = "Downloaded", Date = info.Date, Song = info.Song });
             return listenActivities.Concat(uploadActivities).Concat(downloadActivities).OrderByDescending(activity => activity.Date).ToList();

@@ -93,26 +93,62 @@
 
 <script>
     $(function() {
-        setup_wmd({
-            input: 'description',
-            button_bar: 'description-button-bar',
-            preview: 'description-preview'
-        });
-        $('.wmd-code-button, .wmd-help-button, #description-button-bar').hide();
-        $('#description').hide();
-        $('#content-column').fadeIn();
+        setupDescription();
+        setupPlayer();
 
-        $('.jp-title li').text("@Model.Artist – @Model.Title");
-        $('#jplayer').jPlayer({
-            ready: function() {
-                $(this).jPlayer('setMedia', {
-                    mp3: "@Model.ServerPath"
-                });
-            },
-            volume: '1.0',
-            swfPath: 'js',
-            wmode: 'window'
-        });
+        function setupDescription() {
+            setup_wmd({
+                input: 'description',
+                button_bar: 'description-button-bar',
+                preview: 'description-preview'
+            });
+            $('.wmd-code-button, .wmd-help-button, #description-button-bar').hide();
+            $('#description').hide();
+            $('#content-column').fadeIn();
+        }
+
+        function setupPlayer() {
+            $('.jp-title li').text("@Model.Artist – @Model.Title");
+            $('#jplayer').jPlayer({
+                ready: function() {
+                    $(this).jPlayer('setMedia', {
+                        mp3: "@Model.ServerPath"
+                    });
+                },
+                volume: '1.0',
+                swfPath: 'js',
+                wmode: 'window',
+                play: function() {
+                    console.log('play');
+                    var player = this;
+                    if (!this.recordedPlay) {
+                        this.playTimeout = setTimeout(function() {
+                            player.recordedPlay = true;
+                            $.ajax({
+                                type: 'POST',
+                                url: '@Url.RouteUrl(new { controller = "User", action = "AddListen", songId = Model.SongId })',
+                                success: function(data, status) {
+                                    if (!data.error) {
+                                        console.log('Received data:');
+                                        console.log(data);
+                                    }
+                                },
+                                error: function(data, status) {
+                                    console.log('error');
+                                    console.log('data:');
+                                    console.log(data);
+                                    console.log('status: ' + status);
+                                }
+                            });
+                        }, 5000);
+                    }
+                },
+                pause: function() {
+                    console.log('paused');
+                    clearTimeout(this.playTimeout);
+                }
+            });
+        }
     });
 </script>
 

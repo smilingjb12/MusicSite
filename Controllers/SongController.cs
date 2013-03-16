@@ -43,12 +43,12 @@ namespace MusicSite.Controllers
 
         public ActionResult Edit(int id)
         {
-            Song song = repository.AllSongs.FirstOrDefault(s => s.SongId == id);
+            Song song = repository.FindSongById(id);
             if (song == null)
             {
                 return HttpNotFound();
             }
-            User user = repository.AllUsers.First(u => u.Name == HttpContext.User.Identity.Name);
+            User user = repository.FindUserByName(User.Identity.Name);
             List<Song> userUploadedSongs = user.GetUploadedSongs();
             if (userUploadedSongs.FirstOrDefault(s => s.SongId == song.SongId) == null)
             {

@@ -1,4 +1,4 @@
-﻿@model IEnumerable<MusicSite.Models.Domain.User>
+﻿@model MusicSite.Models.AdminUsersViewModel
 
 @{
     ViewBag.Title = "Users";
@@ -21,7 +21,7 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach (var user in Model)
+                @foreach (var user in Model.Users)
                 {
                     <tr>
                         <td>@user.UserId</td>
@@ -34,5 +34,18 @@
                 }
             </tbody>
         </table>
+        <ul class="pagination">
+            @for (int i = 1; i <= Model.PagingInfo.Total; ++i)
+            {
+                if (i == Model.PagingInfo.Current)
+                {
+                    <li class="current"><a href>@i</a></li>
+                }
+                else
+                {
+                    <li>@Html.ActionLink(@i.ToString(), "Users", new { controller = "Admin", page = i })</li>   
+                }
+            }
+        </ul>
     </div>
 </div>

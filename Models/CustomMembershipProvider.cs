@@ -17,12 +17,12 @@ namespace MusicSite.Models
             {
                 return false;
             }
-            User user = repository.AllUsers.FirstOrDefault(u => u.Name == username);
+            User user = repository.FindUserByName(username);
             if (user == null)
             {
                 return false;
             }
-            if (user.Password == password)
+            if (user.Password == FormsAuthentication.HashPasswordForStoringInConfigFile(password, "SHA1"))
             {
                 return true;
             }

@@ -21,7 +21,7 @@ namespace MusicSite.Models.Domain
         [Display(Name="Nickname")]
         [Required(ErrorMessage="Nickname is required")]
         [RegularExpression("^[A-Za-z_][-_A-Za-z0-9]+$", 
-            ErrorMessage="Nickname must begin with a letter and be at least 2 characters long")]
+            ErrorMessage="Nickname must begin with a letter and be at least 2 characters long. Spaces are not allowed.")]
         public string Name { get; set; }
 
         [Required(ErrorMessage="Password is required")]

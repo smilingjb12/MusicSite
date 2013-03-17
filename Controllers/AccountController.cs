@@ -21,7 +21,7 @@ namespace MusicSite.Controllers
 
         private ActionResult RenderViewIfNotAuthenticated()
         {
-            if (HttpContext.User.Identity.IsAuthenticated)
+            if (User.Identity.IsAuthenticated)
             {
                 return RedirectToRoute(new { controller = "User", action = "Show" });
             }
@@ -57,8 +57,7 @@ namespace MusicSite.Controllers
             {
                 return View();
             }
-            User existingUser = repository.AllUsers
-                .FirstOrDefault(u => u.Name == user.Name);
+            User existingUser = repository.FindUserByName(user.Name);
             if (existingUser != null)
             {
                 ModelState.AddModelError("", "Nickname is already taken. Choose another");
@@ -67,12 +66,22 @@ namespace MusicSite.Controllers
             else
             {
                 string activationCode = Guid.NewGuid().ToString();
+                try
+                {
+                    EmailSender.SendActivationCode(user.Email, activationCode);
+                }
+                catch (FormatException)
+                {
+                    ModelState.AddModelError("Email", "Email format is incorrect");
+                    return View();
+                }
+                string hashedPassword = FormsAuthentication.HashPasswordForStoringInConfigFile(user.Password, "SHA1");
+                user.Password = hashedPassword;
                 user.ActivationCode = activationCode;
                 user.IsActivated = false;
                 user.Role = "User";
                 repository.AddUser(user);
                 TempData["notice"] = string.Format("An email with activation link has been sent to {0}. Check it out", user.Email);
-                EmailSender.SendActivationCode(user.Email, activationCode);
                 return RedirectToAction("Index", "Home");
             }
         }
@@ -82,7 +91,7 @@ namespace MusicSite.Controllers
         {
             if (Membership.ValidateUser(name, password))
             {
-                User user = repository.AllUsers.First(u => u.Name == name);
+                User user = repository.FindUserByName(name);
                 if (!user.IsActivated)
                 {
                     ModelState.AddModelError("", "Your account hasn't been activated yet. Check your email");

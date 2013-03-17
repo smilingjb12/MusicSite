@@ -29,7 +29,7 @@ namespace MusicSite.Controllers
             model.PagingInfo = new PagingInfo
             {
                 Current = page,
-                Total = 1 + users.Count() / PageSize,
+                Total = (int)Math.Ceiling(users.Count() / (double)PageSize),
                 PageSize = PageSize
             };
 
